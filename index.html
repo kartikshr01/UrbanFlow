@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanFlow | Traffic Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-size: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Global Animations & Effects */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .animated-gradient-bg {
+      background-color: #e9f0fe;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 15px 0px rgba(99, 102, 241, 0.6);
+      }
+
+      50% {
+        box-shadow: 0 0 30px 5px rgba(99, 102, 241, 0.4);
+      }
+    }
+
+    @keyframes scanline {
+      0% {
+        transform: translateY(-5%);
+      }
+
+      100% {
+        transform: translateY(5%);
+      }
+    }
+
+    /* Custom Scrollbar for Webkit browsers */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #9ca7b4;
+      /* slate-400 */
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #7a8596;
+      /* slate-500 */
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.1.1/",
+        "react": "https://aistudiocdn.com/react@^19.1.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.1.1"
+      }
+    }
+  </script>
+  
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="modal-root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
