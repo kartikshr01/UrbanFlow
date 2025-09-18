@@ -27,7 +27,7 @@ const SystemOverviewPanel: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 h-full">
             <StatItem 
                 icon={<JunctionIcon className="h-6 w-6" />}
-                value="18"
+                value="4"
                 label={t('stat_total_junctions')}
                 iconBg="bg-indigo-100"
                 iconColor="text-indigo-500"

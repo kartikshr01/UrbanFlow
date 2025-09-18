@@ -23,10 +23,10 @@ export const TrafficSystemLogoIcon: React.FC<IconProps> = ({ className }) => {
         <path d="M12 22.5C12 22.5 21 18 21 12V4.5L12 1.5L3 4.5V12C3 18 12 22.5 12 22.5Z" />
         
         {/* Traffic Light */}
-        <rect x="10" y="6" width="4" height="12" rx="1" fill="currentColor" fillOpacity="0.2" stroke="none" />
-        <circle cx="12" cy="8.5" r="1.3" fill="#ef4444" stroke="none" />
-        <circle cx="12" cy="12" r="1.3" fill="#f59e0b" stroke="none" />
-        <circle cx="12" cy="15.5" r="1.3" fill="#22c55e" stroke="none" />
+        <rect x="9.5" y="5" width="5" height="14" rx="1.5" fill="currentColor" fillOpacity="0.2" stroke="none" />
+        <circle cx="12" cy="8" r="1.6" fill="#ef4444" stroke="none" />
+        <circle cx="12" cy="12" r="1.6" fill="#f59e0b" stroke="none" />
+        <circle cx="12" cy="16" r="1.6" fill="#22c55e" stroke="none" />
       </g>
     </svg>
   );

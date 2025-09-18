@@ -77,10 +77,10 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
         </div>
         <h1 className="text-3xl font-bold tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-sky-500">{t('login_title')}</h1>
         <p className="text-lg text-slate-600">{t('login_system_name')}</p>
-        <p className="mt-4 text-sm text-[#7a8596]">{t('login_subtitle')}</p>
+        <p className="mt-6 text-sm text-[#7a8596]">{t('login_subtitle')}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-6">
         {/* Agency Role */}
         <div>
           <label htmlFor="agency-role-button" className="block text-sm font-medium text-[#1d293d] mb-2">{t('agency_role')}</label>

@@ -6,9 +6,9 @@ export const translations = {
     or: "ଅର୍ବାନଫ୍ଲୋ",
   },
   login_system_name: {
-    en: "Traffic Management System",
-    hi: "यातायात प्रबंधन प्रणाली",
-    or: "ଟ୍ରାଫିକ୍ ପରିଚାଳନା ସିଷ୍ଟମ୍",
+    en: "Smart Traffic Management System",
+    hi: "स्मार्ट यातायात प्रबंधन प्रणाली",
+    or: "ସ୍ମାର୍ଟ ଟ୍ରାଫିକ୍ ପରିଚାଳନା ସିଷ୍ଟମ୍",
   },
   login_subtitle: {
     en: "Government Authorized Access Only",
