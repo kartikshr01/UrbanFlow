@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { JunctionIcon } from '../icons/JunctionIcon';
@@ -90,7 +89,7 @@ const JunctionControlPanel: React.FC = () => {
     return (
         <>
             <PanelCard title={t('junction_control_panel_title')} icon={<JunctionIcon className="h-5 w-5 text-indigo-500" />}>
-                 <div className="h-full max-h-[220px] space-y-2 overflow-y-auto pr-2 custom-scrollbar">
+                 <div className="h-full space-y-2 overflow-y-auto pr-2 custom-scrollbar">
                     {junctions.map((junction) => (
                         <div key={junction.id} className="flex items-center justify-between p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
                             <div>

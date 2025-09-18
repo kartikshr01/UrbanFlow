@@ -1,12 +1,11 @@
-
 import React, { useState, useContext } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { LanguageContext } from '../../contexts/LanguageContext';
-import { AmbulanceIcon } from '../icons/AmbulanceIcon';
-import { PoliceBadgeIcon } from '../icons/PoliceBadgeIcon';
-import { FireIcon } from '../icons/FireIcon';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
 import { ClipboardListIcon } from '../icons/ClipboardListIcon';
+import { AmbulanceLogo } from '../logos/AmbulanceLogo';
+import { PoliceLogo } from '../logos/PoliceLogo';
+import { FireLogo } from '../logos/FireLogo';
 
 type Agency = 'Ambulance' | 'Police' | 'Fire Dept';
 type CorridorRequestStatus = 'Pending' | 'Active';
@@ -20,9 +19,9 @@ interface CorridorRequest {
 }
 
 const agencyDetails: { [key in Agency]: { icon: React.ReactNode; color: string } } = {
-    Ambulance: { icon: <AmbulanceIcon className="h-5 w-5" />, color: 'text-indigo-500' },
-    Police: { icon: <PoliceBadgeIcon className="h-5 w-5" />, color: 'text-blue-500' },
-    'Fire Dept': { icon: <FireIcon className="h-5 w-5" />, color: 'text-red-500' },
+    Ambulance: { icon: <AmbulanceLogo className="h-5 w-5" />, color: 'text-red-500' },
+    Police: { icon: <PoliceLogo className="h-5 w-5" />, color: 'text-blue-500' },
+    'Fire Dept': { icon: <FireLogo className="h-5 w-5" />, color: 'text-orange-500' },
 };
 
 
@@ -31,7 +30,7 @@ const EmergencyCorridorPanel: React.FC = () => {
 
   const initialRequests: CorridorRequest[] = [
     { id: 1, unitId: t('ems_15'), agency: 'Ambulance', source: t('source_sector_14'), destination: t('dest_mbh'), status: 'Pending' },
-    { id: 2, unitId: t('patrol_07'), agency: 'Police', source: t('junction_hathi_pol'), destination: t('dest_hathi_pol_incident'), status: 'Active' },
+    { id: 2, unitId: t('pcr_07'), agency: 'Police', source: t('junction_hathi_pol'), destination: t('dest_hathi_pol_riot_control'), status: 'Active' },
     { id: 3, unitId: t('engine_03'), agency: 'Fire Dept', source: t('junction_madri_industrial'), destination: t('dest_warehouse_fire'), status: 'Pending' },
   ];
 
@@ -54,7 +53,7 @@ const EmergencyCorridorPanel: React.FC = () => {
   
   return (
     <PanelCard title={t('corridor_requests_panel_title')} icon={<ClipboardListIcon className="h-5 w-5 text-indigo-500" />}>
-      <div className="h-full max-h-[220px] space-y-3 overflow-y-auto pr-2 custom-scrollbar">
+      <div className="h-full space-y-3 overflow-y-auto pr-2 custom-scrollbar">
         {requests.map((request) => {
             const isPending = request.status === 'Pending';
             const details = agencyDetails[request.agency];

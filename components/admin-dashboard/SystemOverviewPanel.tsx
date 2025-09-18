@@ -5,7 +5,7 @@ import { JunctionIcon } from '../icons/JunctionIcon';
 import { UsersIcon } from '../icons/UsersIcon';
 import { StopwatchIcon } from '../icons/StopwatchIcon';
 import { LayoutDashboardIcon } from '../icons/LayoutDashboardIcon';
-import { AmbulanceIcon } from '../icons/AmbulanceIcon';
+import { ShieldIcon } from '../icons/ShieldIcon';
 import { SolidCircleIcon } from '../icons/SolidCircleIcon';
 
 const StatItem: React.FC<{ icon: React.ReactNode; value: string; label: string; iconBg: string; iconColor: string; }> = ({ icon, value, label, iconBg, iconColor }) => (
@@ -40,7 +40,7 @@ const SystemOverviewPanel: React.FC = () => {
                 iconColor="text-sky-500"
             />
             <StatItem 
-                icon={<AmbulanceIcon className="h-6 w-6" />}
+                icon={<ShieldIcon className="h-6 w-6" />}
                 value="47"
                 label={t('stat_emergency_vehicles')}
                 iconBg="bg-teal-100"

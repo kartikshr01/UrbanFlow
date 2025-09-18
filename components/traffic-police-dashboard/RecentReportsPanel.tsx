@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { HistoryIcon } from '../icons/HistoryIcon';
@@ -43,7 +42,7 @@ const RecentReportsPanel: React.FC = () => {
 
   return (
     <PanelCard title={t('recent_reports_panel_title')} icon={<HistoryIcon className="h-5 w-5 text-indigo-500" />}>
-        <div className="h-full max-h-[400px] space-y-1 overflow-y-auto pr-2 custom-scrollbar">
+        <div className="h-full space-y-1 overflow-y-auto pr-2 custom-scrollbar">
             {reportData.map((report, index) => (
                 <ReportItem key={index} item={report} />
             ))}

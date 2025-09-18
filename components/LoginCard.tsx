@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AgencyRole } from '../types';
 import { AGENCY_ROLES } from '../constants';
@@ -68,7 +67,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
   const selectedRole = AGENCY_ROLES.find(role => role.value === agencyRole);
 
   return (
-    <div className="relative w-full max-w-md rounded-2xl bg-[#fdfeff] p-8 shadow-lg shadow-slate-300/60 border-slate-200/80 border animate-fade-in">
+    <div className="relative w-full max-w-md rounded-2xl bg-white p-8 shadow-xl shadow-slate-200/60 border-slate-200 border animate-fade-in">
       <div className="absolute top-4 right-4">
         <LanguageSelector />
       </div>

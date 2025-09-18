@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { RoadIcon } from '../icons/RoadIcon';
@@ -22,7 +21,7 @@ const LaneConfigurationPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
   return (
     <PanelCard title={t('lane_config_panel_title')} icon={<RoadIcon className="h-5 w-5 text-indigo-500" />}>
-        <div className="h-full max-h-[220px] space-y-2 overflow-y-auto pr-2 custom-scrollbar">
+        <div className="h-full space-y-2 overflow-y-auto pr-2 custom-scrollbar">
             <Lane name={t('lane_b2_1')} direction={t('direction_eastbound')} isReversible={true} onReverse={() => {}} reverseLabel={t('reverse_button')} />
             <Lane name={t('lane_b2_2')} direction={t('direction_eastbound')} isReversible={true} onReverse={() => {}} reverseLabel={t('reverse_button')} />
             <Lane name={t('lane_t1_1')} direction={t('direction_westbound')} isReversible={false} onReverse={() => {}} reverseLabel={t('reverse_button')} />

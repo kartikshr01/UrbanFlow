@@ -1,9 +1,8 @@
-
 import React, { useState, useContext } from 'react';
-import { PoliceBadgeIcon } from '../icons/PoliceBadgeIcon';
 import ConfirmationModal from '../shared/ConfirmationModal';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import LanguageSelector from '../shared/LanguageSelector';
+import { PoliceLogo } from '../logos/PoliceLogo';
 
 interface HeaderProps {
   onLogout: () => void;
@@ -20,10 +19,10 @@ const PoliceHeader: React.FC<HeaderProps> = ({ onLogout }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between w-full bg-[#fdfeff] border-slate-200/80 border rounded-2xl p-4 shadow-lg shadow-slate-200/50">
+      <header className="flex items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60">
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 border border-indigo-200">
-            <PoliceBadgeIcon className="h-7 w-7 text-indigo-500" />
+          <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 border border-blue-200">
+            <PoliceLogo className="h-7 w-7 text-blue-500" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-[#1d293d]">{t('police_header_title')}</h1>

@@ -9,7 +9,7 @@ interface PanelCardProps {
 }
 
 const PanelCard: React.FC<PanelCardProps> = ({ title, icon, badge, children, className = '' }) => (
-  <div className={`h-full flex flex-col bg-[#fdfeff] border-slate-200/80 border rounded-2xl p-6 shadow-lg shadow-slate-200/50 ${className}`}>
+  <div className={`h-full flex flex-col bg-white border-slate-200 border rounded-2xl p-6 shadow-md shadow-slate-200/60 ${className}`}>
     <div className={`flex items-center gap-3 mb-4 ${badge ? 'justify-between' : ''}`}>
       <div className="flex items-center gap-3">
         {icon && (
@@ -21,7 +21,9 @@ const PanelCard: React.FC<PanelCardProps> = ({ title, icon, badge, children, cla
       </div>
       {badge}
     </div>
-    {children}
+    <div className="flex-grow min-h-0">
+      {children}
+    </div>
   </div>
 );
 

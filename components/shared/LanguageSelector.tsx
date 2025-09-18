@@ -11,6 +11,7 @@ const LanguageSelector: React.FC = () => {
   const languages = {
     en: 'English',
     hi: 'हिन्दी',
+    or: 'ଓଡ଼ିଆ',
   };
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const LanguageSelector: React.FC = () => {
     };
   }, []);
 
-  const handleLanguageChange = (lang: 'en' | 'hi') => {
+  const handleLanguageChange = (lang: 'en' | 'hi' | 'or') => {
     setLanguage(lang);
     setIsOpen(false);
   };
@@ -64,6 +65,14 @@ const LanguageSelector: React.FC = () => {
                     aria-selected={language === 'hi'}
                 >
                     हिन्दी
+                </li>
+                 <li
+                    onClick={() => handleLanguageChange('or')}
+                    className="cursor-pointer rounded-md px-3 py-2 text-slate-700 hover:bg-indigo-50 transition-colors duration-150"
+                    role="option"
+                    aria-selected={language === 'or'}
+                >
+                    ଓଡ଼ିଆ
                 </li>
             </ul>
         </div>

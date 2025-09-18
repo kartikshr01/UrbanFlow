@@ -4,8 +4,8 @@ import { JunctionIcon } from '../icons/JunctionIcon';
 import { StopwatchIcon } from '../icons/StopwatchIcon';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { ChartBarIcon } from '../icons/ChartBarIcon';
-import { SettingsIcon } from '../icons/SettingsIcon';
-import { SolidCircleIcon } from '../icons/SolidCircleIcon';
+import { GearIcon } from '../icons/GearIcon';
+import { ShieldIcon } from '../icons/ShieldIcon';
 
 const StatItem: React.FC<{ icon: React.ReactNode; value: string; label: string; iconBg: string; iconColor: string; }> = ({ icon, value, label, iconBg, iconColor }) => (
     <div className="flex items-center gap-4 p-4 bg-slate-50/70 rounded-lg border border-slate-200/80">
@@ -32,14 +32,14 @@ const QuickStatsPanel: React.FC = () => {
                 iconColor="text-indigo-500"
             />
             <StatItem 
-                icon={<SettingsIcon className="h-6 w-6" />}
+                icon={<GearIcon className="h-6 w-6" />}
                 value="4"
                 label={t('stat_manual_overrides')}
                 iconBg="bg-orange-100"
                 iconColor="text-orange-500"
             />
             <StatItem 
-                icon={<SolidCircleIcon className="h-6 w-6" />}
+                icon={<ShieldIcon className="h-6 w-6" />}
                 value="2"
                 label={t('stat_emergency_corridors')}
                 iconBg="bg-red-100"

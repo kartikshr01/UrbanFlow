@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react';
 import ConfirmationModal from '../shared/ConfirmationModal';
 import { LanguageContext } from '../../contexts/LanguageContext';
@@ -20,7 +19,7 @@ const AdminHeader: React.FC<HeaderProps> = ({ onLogout }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between w-full bg-[#fdfeff] border-slate-200/80 border rounded-2xl p-4 shadow-lg shadow-slate-200/50">
+      <header className="flex items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-slate-200 border border-slate-300">
             <UserIcon className="h-7 w-7 text-slate-600" />

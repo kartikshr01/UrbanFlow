@@ -1,18 +1,30 @@
-
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { SirenIcon } from '../icons/SirenIcon';
 import { PinIcon } from '../icons/PinIcon';
 import { ChevronDownIcon } from '../icons/ChevronDownIcon';
 import PanelCard from '../shared/PanelCard';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import EmergencyRequestConfirmationModal from '../shared/EmergencyRequestConfirmationModal';
+
+export interface RequestDetails {
+  latitude: string;
+  longitude: string;
+  destination: string;
+  priority: {
+    label: string;
+    description: string;
+    value: string;
+  };
+  description: string;
+}
 
 const RequestCorridorPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
 
   const priorityLevels = [
-    { value: 'critical', label: t('priority_critical'), description: t('priority_critical_desc'), color: 'bg-red-500', textColor: 'text-red-600' },
-    { value: 'high', label: t('priority_high'), description: t('priority_high_desc'), color: 'bg-orange-500', textColor: 'text-orange-600' },
-    { value: 'medium', label: t('priority_medium'), description: t('priority_medium_desc'), color: 'bg-yellow-500', textColor: 'text-yellow-600' },
+    { value: 'level_3', label: t('priority_level_3'), description: t('priority_level_3_desc'), color: 'bg-red-500', textColor: 'text-red-600' },
+    { value: 'level_2', label: t('priority_level_2'), description: t('priority_level_2_desc'), color: 'bg-orange-500', textColor: 'text-orange-600' },
+    { value: 'level_1', label: t('priority_level_1'), description: t('priority_level_1_desc'), color: 'bg-yellow-500', textColor: 'text-yellow-600' },
   ];
   
   type Priority = typeof priorityLevels[0];
@@ -20,8 +32,12 @@ const RequestCorridorPanel: React.FC = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [destination, setDestination] = useState('');
+  const [description, setDescription] = useState('');
   const [selectedPriority, setSelectedPriority] = useState<Priority>(priorityLevels[0]);
   const [isPriorityDropdownOpen, setIsPriorityDropdownOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const [requestData, setRequestData] = useState<RequestDetails | null>(null);
+
   const priorityDropdownRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -44,7 +60,6 @@ const RequestCorridorPanel: React.FC = () => {
     }
   }, [t]);
 
-
   const handleGetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -53,7 +68,7 @@ const RequestCorridorPanel: React.FC = () => {
           setLongitude(position.coords.longitude.toFixed(6));
         },
         (error) => {
-          console.error("Error getting location:", error);
+          console.error(`Error getting location: ${error.message} (Code: ${error.code})`);
           let userMessage = t('error_location_generic');
           switch (error.code) {
             case 1: // PERMISSION_DENIED
@@ -74,16 +89,38 @@ const RequestCorridorPanel: React.FC = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!isFormValid) return;
+    const data: RequestDetails = {
+      latitude,
+      longitude,
+      destination,
+      priority: {
+        label: selectedPriority.label,
+        description: selectedPriority.description,
+        value: selectedPriority.value,
+      },
+      description
+    };
+    setRequestData(data);
+    setIsConfirmationModalOpen(true);
+  };
+  
+  const handleConfirmRequest = () => {
+    console.log("Submitting confirmed request:", requestData);
+    // TODO: Add actual API call here
+    setIsConfirmationModalOpen(false);
+    setRequestData(null);
+    // Optionally reset form fields here
+  };
+
   const isFormValid = latitude.trim() !== '' && longitude.trim() !== '' && destination.trim() !== '';
 
   return (
+    <>
     <PanelCard title={t('request_corridor_panel_title')} icon={<SirenIcon className="h-5 w-5 text-indigo-500" />}>
-      <form className="flex flex-col h-full space-y-4">
-        <div>
-          <label htmlFor="unit-id" className="block text-sm font-medium text-[#7a8596] mb-1.5">{t('unit_identifier_label')}</label>
-          <input type="text" id="unit-id" placeholder={t('unit_identifier_placeholder')} className="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 transition-all" />
-        </div>
-        
+      <form onSubmit={handleSubmit} className="flex flex-col h-full space-y-4">
         <div>
           <label htmlFor="priority-button" className="block text-sm font-medium text-[#7a8596] mb-1.5">{t('priority_level_label')}</label>
           <div className="relative" ref={priorityDropdownRef}>
@@ -142,6 +179,7 @@ const RequestCorridorPanel: React.FC = () => {
             placeholder={t('destination_placeholder')} 
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
+            required
             className="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 transition-all" />
         </div>
         <div>
@@ -151,14 +189,16 @@ const RequestCorridorPanel: React.FC = () => {
               type="text" 
               placeholder={t('latitude_placeholder')} 
               value={latitude}
-              onChange={(e) => setLatitude(e.target.value)}
-              className="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 transition-all" />
+              readOnly
+              required
+              className="w-full bg-slate-200/70 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-0 focus:border-slate-300 transition-all cursor-default" />
             <input 
               type="text" 
               placeholder={t('longitude_placeholder')} 
               value={longitude}
-              onChange={(e) => setLongitude(e.target.value)}
-              className="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 transition-all" />
+              readOnly
+              required
+              className="w-full bg-slate-200/70 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-0 focus:border-slate-300 transition-all cursor-default" />
             <button 
               type="button" 
               onClick={handleGetLocation} 
@@ -171,7 +211,13 @@ const RequestCorridorPanel: React.FC = () => {
         </div>
         <div className="flex-grow flex flex-col">
           <label htmlFor="description" className="block text-sm font-medium text-[#7a8596] mb-1.5">{t('emergency_description_label')}</label>
-          <textarea id="description" rows={4} placeholder={t('emergency_description_placeholder')} className="w-full flex-grow bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 resize-none transition-all"></textarea>
+          <textarea 
+            id="description" 
+            rows={4} 
+            placeholder={t('emergency_description_placeholder')} 
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full flex-grow bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 resize-none transition-all"></textarea>
         </div>
         <button 
           type="submit" 
@@ -182,6 +228,13 @@ const RequestCorridorPanel: React.FC = () => {
         </button>
       </form>
     </PanelCard>
+     <EmergencyRequestConfirmationModal
+        isOpen={isConfirmationModalOpen}
+        onClose={() => setIsConfirmationModalOpen(false)}
+        onConfirm={handleConfirmRequest}
+        requestDetails={requestData}
+      />
+    </>
   );
 };
 
