@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60">
+      <header className="flex flex-wrap items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60 gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 border border-red-200">
             <AmbulanceLogo className="h-7 w-7 text-red-500" />
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
             <p className="text-sm text-[#7a8596]">{t('ems_header_subtitle')}</p>
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-green-600/80 rounded-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-green-500/40">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>

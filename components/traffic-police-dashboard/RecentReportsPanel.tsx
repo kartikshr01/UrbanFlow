@@ -9,15 +9,17 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 const ReportItem: React.FC<{ item: any }> = ({ item }) => {
     const { t } = useContext(LanguageContext);
     return (
-        <div className="flex items-center gap-4 p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
-            <div className="flex-shrink-0 h-9 w-9 flex items-center justify-center rounded-full bg-white border border-slate-200">
-                {item.icon}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
+            <div className="flex items-center gap-4 w-full">
+                <div className="flex-shrink-0 h-9 w-9 flex items-center justify-center rounded-full bg-white border border-slate-200">
+                    {item.icon}
+                </div>
+                <div className="flex-grow">
+                    <p className="font-semibold text-[#1d293d]">{item.title}</p>
+                    <p className="text-sm text-[#7a8596]">{t('report_generated_label')} {item.date}</p>
+                </div>
             </div>
-            <div className="flex-grow">
-                <p className="font-semibold text-[#1d293d]">{item.title}</p>
-                <p className="text-sm text-[#7a8596]">{t('report_generated_label')} {item.date}</p>
-            </div>
-            <div className="flex-shrink-0 flex items-center gap-2">
+            <div className="w-full sm:w-auto flex-shrink-0 flex items-center justify-end gap-2">
                 <button className="px-3 py-1.5 text-sm font-semibold text-slate-700 bg-white rounded-lg border border-slate-300 hover:bg-slate-100 transition-colors">
                     {t('view_button')}
                 </button>

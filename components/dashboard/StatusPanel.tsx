@@ -46,7 +46,7 @@ const StatusPanel: React.FC = () => {
                     </div>
 
                     {/* ETA and Route */}
-                    <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between gap-4">
+                    <div className="pt-3 border-t border-slate-200/80 flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div className="flex items-center gap-2">
                             <StopwatchIcon className="h-5 w-5 text-green-600"/>
                             <div>
@@ -54,7 +54,7 @@ const StatusPanel: React.FC = () => {
                                 <p className="font-bold text-green-700">{request.eta} {t('common_minutes')}</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-2 flex-wrap justify-end max-w-[60%]">
+                        <div className="flex items-center gap-2 flex-wrap justify-start sm:justify-end w-full sm:max-w-[60%]">
                             {request.route.map((junction, index) => (
                                 <React.Fragment key={junction}>
                                     <RouteBadge label={junction} />

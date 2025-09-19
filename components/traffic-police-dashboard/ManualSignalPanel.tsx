@@ -15,10 +15,10 @@ const SignalButton: React.FC<{ direction: string; state: SignalState; onClick: (
         <button 
             onClick={onClick}
             disabled={disabled}
-            className={`flex items-center justify-center h-16 w-16 rounded-full transition-all border-4 ${state === 'go' ? 'bg-green-100 border-green-300 ring-4 ring-green-400' : 'bg-red-100 border-red-300'} ${disabled ? 'cursor-not-allowed' : 'hover:bg-red-200'}`} 
+            className={`flex items-center justify-center h-14 w-14 sm:h-16 sm:w-16 rounded-full transition-all border-4 ${state === 'go' ? 'bg-green-100 border-green-300 ring-4 ring-green-400' : 'bg-red-100 border-red-300'} ${disabled ? 'cursor-not-allowed' : 'hover:bg-red-200'}`} 
             aria-label={ariaLabel}
         >
-            <TrafficLightIcon state={state} className="h-10 w-10 text-slate-700" />
+            <TrafficLightIcon state={state} className="h-8 w-8 sm:h-10 sm:w-10 text-slate-700" />
         </button>
     </div>
 );
@@ -107,7 +107,7 @@ const ManualSignalPanel: React.FC = () => {
                             <SignalButton direction={t('direction_west')} state={signals.west} onClick={() => handleSignalChange('west')} disabled={!isOverrideActive} ariaLabel={t(signals.west === 'go' ? 'aria_set_direction_stop' : 'aria_set_direction_go').replace('{direction}', t('direction_west'))} />
                         </div>
                         <div className="col-start-2 row-start-2 flex justify-center items-center">
-                            <JunctionIcon className="h-20 w-20 text-slate-400" />
+                            <JunctionIcon className="h-16 w-16 sm:h-20 sm:w-20 text-slate-400" />
                         </div>
                         <div className="col-start-3 row-start-2 flex justify-center">
                             {/* FIX: The 't' function does not handle interpolation. Using string.replace() to insert dynamic values. */}

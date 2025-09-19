@@ -91,11 +91,11 @@ const JunctionControlPanel: React.FC = () => {
             <PanelCard title={t('junction_control_panel_title')} icon={<JunctionIcon className="h-5 w-5 text-indigo-500" />}>
                  <div className="h-full space-y-2 overflow-y-auto pr-2 custom-scrollbar">
                     {junctions.map((junction) => (
-                        <div key={junction.id} className="flex items-center justify-between p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
+                        <div key={junction.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
                             <div>
                                 <p className="font-semibold text-[#1d293d]">{junction.id}: {junction.name}</p>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 self-end sm:self-center">
                                 <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${statusDetails[junction.status].color}`}>
                                     {t(statusDetails[junction.status].labelKey)}
                                 </span>

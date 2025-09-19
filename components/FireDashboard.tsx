@@ -10,7 +10,7 @@ interface FireDashboardProps {
 
 const FireDashboard: React.FC<FireDashboardProps> = ({ onLogout }) => {
   return (
-    <div className="w-full min-h-screen max-w-screen-2xl mx-auto p-4 lg:p-6 flex flex-col gap-6 animate-fade-in">
+    <div className="w-full min-h-screen max-w-screen-2xl mx-auto flex flex-col gap-6 animate-fade-in">
       <BrandHeader />
       <div className="animate-fade-in relative z-10" style={{ animationDelay: '0.1s' }}>
         <FireHeader onLogout={onLogout} />

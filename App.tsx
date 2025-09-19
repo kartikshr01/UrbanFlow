@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
   return (
     <LanguageProvider>
-      <main className="relative min-h-screen w-full flex items-center justify-center p-4 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300">
+      <main className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300">
         <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/google/aistudio/main/assets/app-assets/ems-grid-bg.svg')] bg-repeat opacity-10"></div>
         {renderDashboard()}
       </main>

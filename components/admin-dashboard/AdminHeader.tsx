@@ -19,7 +19,7 @@ const AdminHeader: React.FC<HeaderProps> = ({ onLogout }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60">
+      <header className="flex flex-wrap items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60 gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-slate-200 border border-slate-300">
             <UserIcon className="h-7 w-7 text-slate-600" />
@@ -30,7 +30,7 @@ const AdminHeader: React.FC<HeaderProps> = ({ onLogout }) => {
           </div>
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSelector />
           <button
             onClick={() => setIsModalOpen(true)}

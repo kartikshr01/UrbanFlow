@@ -184,7 +184,7 @@ const RequestCorridorPanel: React.FC = () => {
         </div>
         <div>
            <label className="block text-sm font-medium text-[#7a8596] mb-1.5">{t('current_location_label')}</label>
-           <div className="flex items-center gap-2">
+           <div className="flex flex-col sm:flex-row items-stretch gap-2">
             <input 
               type="text" 
               placeholder={t('latitude_placeholder')} 

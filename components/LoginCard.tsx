@@ -67,7 +67,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
   const selectedRole = AGENCY_ROLES.find(role => role.value === agencyRole);
 
   return (
-    <div className="relative w-full max-w-md rounded-2xl bg-white p-8 shadow-xl shadow-slate-200/60 border-slate-200 border animate-fade-in">
+    <div className="relative w-full max-w-md rounded-2xl bg-white p-6 sm:p-8 shadow-xl shadow-slate-200/60 border-slate-200 border animate-fade-in">
       <div className="absolute top-4 right-4">
         <LanguageSelector />
       </div>
@@ -75,8 +75,8 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
         <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 border border-indigo-200" style={{ animation: 'pulse-glow 4s infinite' }}>
           <TrafficSystemLogoIcon className="h-8 w-8 text-indigo-500" />
         </div>
-        <h1 className="text-3xl font-bold tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-sky-500">{t('login_title')}</h1>
-        <p className="text-lg text-slate-600">{t('login_system_name')}</p>
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-sky-500">{t('login_title')}</h1>
+        <p className="text-base sm:text-lg text-slate-600">{t('login_system_name')}</p>
         <p className="mt-6 text-sm text-[#7a8596]">{t('login_subtitle')}</p>
       </div>
 

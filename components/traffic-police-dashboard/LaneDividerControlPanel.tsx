@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo, useContext, useEffect } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { RoadsIcon } from '../icons/RoadsIcon';
@@ -121,7 +122,7 @@ const LaneDividerControlPanel: React.FC = () => {
           </div>
           <div>
              <label className="block text-sm font-medium text-center text-[#7a8596] mb-2">{t('lane_distribution_label')}</label>
-             <div className="flex items-center justify-center gap-4">
+             <div className="flex flex-row flex-wrap items-center justify-center gap-4">
                 <button 
                     onClick={shiftLeft} 
                     disabled={lanesDirA <= 1}
@@ -130,7 +131,7 @@ const LaneDividerControlPanel: React.FC = () => {
                 >
                     <ArrowNarrowLeftIcon className="h-6 w-6" />
                 </button>
-                <div className="text-center font-semibold text-indigo-700 bg-indigo-50 py-2 px-4 w-60 rounded-lg border border-indigo-200">
+                <div className="text-center font-semibold text-indigo-700 bg-indigo-50 py-2 px-4 w-full sm:w-auto rounded-lg border border-indigo-200">
                     <p>{lanesDirA} {selectedLocation.dirAName}</p>
                     <p className="text-xs text-indigo-500">|</p>
                     <p>{lanesDirB} {selectedLocation.dirBName}</p>
