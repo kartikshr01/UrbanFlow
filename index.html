@@ -48,6 +48,19 @@
       }
     }
 
+    @keyframes pulse-active-tab {
+        0%, 100% {
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.15);
+        }
+        50% {
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.25);
+        }
+    }
+    
+    .animate-pulse-active-tab {
+        animation: pulse-active-tab 2.5s infinite ease-in-out;
+    }
+
     @keyframes scanline {
       0% {
         transform: translateY(-5%);

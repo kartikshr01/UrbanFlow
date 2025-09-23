@@ -29,7 +29,6 @@ const AdminHeader: React.FC<HeaderProps> = ({ onLogout }) => {
             <p className="text-sm text-[#7a8596]">{t('admin_header_subtitle')}</p>
           </div>
         </div>
-        
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSelector />
           <button

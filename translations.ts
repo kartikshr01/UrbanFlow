@@ -413,6 +413,7 @@ export const translations = {
   all_stop_button: { en: "All Stop (Red)", hi: "सब रोकें (लाल)", or: "ସବୁ ବନ୍ଦ (ଲାଲ୍)" },
   engage_manual_override_button: { en: "Engage Manual Override", hi: "मैनुअल ओवरराइड संलग्न करें", or: "ମାନୁଆଲ୍ ଓଭରରାଇଡ୍ ଆରମ୍ଭ କରନ୍ତୁ" },
   manual_override_warning: { en: "Warning: Manual overrides require supervisor approval for major intersections.", hi: "चेतावनी: प्रमुख चौराहों के लिए मैनुअल ओवरराइड के लिए पर्यवेक्षक की मंजूरी आवश्यक है।", or: "ଚେତାବନୀ: ପ୍ରମୁଖ ଛକ ପାଇଁ ମାନୁଆଲ୍ ଓଭରରାଇଡ୍ ପାଇଁ ସୁପରଭାଇଜର୍ ଅନୁମୋଦନ ଆବଶ୍ୟକ।" },
+  manual_override_warning_short: { en: "You have manual control. Proceed with caution.", hi: "आपके पास मैन्युअल नियंत्रण है। सावधानी से आगे बढ़ें।", or: "ଆପଣଙ୍କ ପାଖରେ ମାନୁଆଲ୍ ନିୟନ୍ତ୍ରଣ ଅଛି। ସାବଧାନତାର ସହିତ ଆଗକୁ ବଢ଼ନ୍ତୁ।" },
   auto_mode_active: { en: "Auto Mode Active", hi: "ऑटो मोड सक्रिय", or: "ସ୍ବୟଂଚାଳିତ ମୋଡ୍ ସକ୍ରିୟ" },
   time_remaining: { en: "Time Remaining", hi: "शेष समय", or: "ବାକି ସମୟ" },
   seconds_short: { en: "s", hi: "से", or: "ସେ" },
