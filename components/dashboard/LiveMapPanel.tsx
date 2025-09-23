@@ -56,7 +56,7 @@ const LiveMapPanel: React.FC = () => {
     { id: 5, color: "bg-red-500", count: 2, top: "80%", left: "80%", animationDelay: "0.8s", junctionName: t('junction_udaipole') },
   ];
 
-  const [trafficData, setTrafficData] = useState<TrafficMarkerData[]>(getInitialTrafficData());
+  const [trafficData, setTrafficData] = useState<TrafficMarkerData[]>(getInitialTrafficData);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,7 +76,19 @@ const LiveMapPanel: React.FC = () => {
   }, []);
   
   useEffect(() => {
-    setTrafficData(getInitialTrafficData());
+    const newJunctionNames: { [key: number]: string } = {
+        1: t('junction_chetak_circle'),
+        2: t('junction_delhi_gate'),
+        3: t('junction_fatehpura'),
+        4: t('junction_shastri_circle'),
+        5: t('junction_udaipole'),
+    };
+    setTrafficData(currentData =>
+        currentData.map(marker => ({
+            ...marker,
+            junctionName: newJunctionNames[marker.id] || marker.junctionName
+        }))
+    );
   }, [t]);
 
 

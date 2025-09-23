@@ -173,12 +173,15 @@ const ManualSignalPanel: React.FC = () => {
                      <div>
                         <label className="block text-sm font-medium text-slate-600 mb-2">{t('select_junction_label')}</label>
                         <div className="flex flex-col space-y-2">
-                            {Object.entries(junctionData).map(([id, data]) => {
-                                const state = junctionStates[id as keyof typeof junctionData];
+                            {/* FIX: Replaced Object.entries with Object.keys for type safety, resolving error on `data.name` */}
+                            {Object.keys(junctionData).map((idString) => {
+                                const id = idString as keyof typeof junctionData;
+                                const data = junctionData[id];
+                                const state = junctionStates[id];
                                 return (
                                     <button 
                                         key={id} 
-                                        onClick={() => setSelectedJunctionId(id as keyof typeof junctionData)}
+                                        onClick={() => setSelectedJunctionId(id)}
                                         className={`w-full text-left p-3 rounded-lg border-l-4 transition-all flex items-center justify-between ${selectedJunctionId === id ? 'bg-indigo-50 border-indigo-500' : 'bg-white border-slate-200 hover:bg-slate-100'}`}
                                     >
                                         <div>

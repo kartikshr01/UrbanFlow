@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import LoginCard from './components/LoginCard';
 import Dashboard from './components/Dashboard';
 import FireDashboard from './components/FireDashboard';
@@ -11,17 +12,9 @@ import { LanguageProvider } from './contexts/LanguageContext';
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState<AgencyRole | null>(null);
-  const [path, setPath] = useState(() => window.location.hash.slice(1) || '/login');
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const onHashChange = () => {
-      setPath(window.location.hash.slice(1) || '/login');
-    };
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
-  
-  const roleToPath: { [key in AgencyRole]?: string } = {
+  const roleToPath: { [key in AgencyRole]: string } = {
       [AgencyRole.AMBULANCE]: '/ems',
       [AgencyRole.FIRE_DEPT]: '/fire',
       [AgencyRole.POLICE_DEPT]: '/police',
@@ -32,61 +25,86 @@ const App: React.FC = () => {
   const handleLoginSuccess = (role: AgencyRole) => {
     setUserRole(role);
     setIsLoggedIn(true);
-    const newPath = roleToPath[role] || '/';
-    window.location.hash = newPath;
+    const newPath = roleToPath[role];
+    navigate(newPath);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserRole(null);
-    window.location.hash = '/login';
+    navigate('/login');
   };
   
-  // Effect for redirecting if not logged in
-  useEffect(() => {
-    const protectedRoutes = Object.values(roleToPath);
-    if (!isLoggedIn && protectedRoutes.includes(path)) {
-      window.location.hash = '/login';
-    }
-     if (isLoggedIn && userRole && roleToPath[userRole] !== path) {
-       // If logged in user tries to access another dashboard, redirect them to their own
-       const correctPath = roleToPath[userRole];
-       if (correctPath) {
-         window.location.hash = correctPath;
-       }
-    }
-  }, [path, isLoggedIn, userRole]);
-
-
-  const renderContent = () => {
-    // If not logged in, always show login card.
+  // FIX: Changed children prop type from JSX.Element to React.ReactNode to resolve TS errors with JSX namespace.
+  const ProtectedRoute = ({ children, requiredRole }: { children: React.ReactNode; requiredRole: AgencyRole; }) => {
     if (!isLoggedIn) {
-        return <LoginCard onLoginSuccess={handleLoginSuccess} />;
+      return <Navigate to="/login" replace />;
     }
 
-    switch (path) {
-      case '/ems':
-        return userRole === AgencyRole.AMBULANCE ? <Dashboard onLogout={handleLogout} /> : null;
-      case '/fire':
-        return userRole === AgencyRole.FIRE_DEPT ? <FireDashboard onLogout={handleLogout} /> : null;
-      case '/police':
-        return userRole === AgencyRole.POLICE_DEPT ? <PoliceDashboard onLogout={handleLogout} /> : null;
-      case '/traffic-police':
-        return userRole === AgencyRole.TRAFFIC_POLICE ? <TrafficPoliceDashboard onLogout={handleLogout} /> : null;
-      case '/admin':
-        return userRole === AgencyRole.ADMIN ? <AdminDashboard onLogout={handleLogout} /> : null;
-      default:
-         const correctPath = userRole ? roleToPath[userRole] : '/login';
-         window.location.hash = correctPath || '/login';
-         return null;
+    if (userRole !== requiredRole) {
+      const correctPath = roleToPath[userRole!];
+      return <Navigate to={correctPath} replace />;
     }
+
+    return children;
   };
+
+  // FIX: Changed children prop type from JSX.Element to React.ReactNode to resolve TS errors with JSX namespace.
+  const LoginRoute = ({ children }: { children: React.ReactNode }) => {
+    if (isLoggedIn && userRole) {
+        const correctPath = roleToPath[userRole];
+        return <Navigate to={correctPath} replace />;
+    }
+    return children;
+  };
+
+  const HomeRedirect = () => {
+    if (isLoggedIn && userRole) {
+        // FIX: Corrected typo from `roleToToPath` to `roleToPath`.
+        const correctPath = roleToPath[userRole];
+        return <Navigate to={correctPath} replace />;
+    }
+    return <Navigate to="/login" replace />;
+  };
+
 
   return (
     <LanguageProvider>
-      <main className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300">
+      <main className={`relative min-h-screen w-full flex justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300 ${isLoggedIn ? 'items-start' : 'items-center'}`}>
         <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/google/aistudio/main/assets/app-assets/ems-grid-bg.svg')] bg-repeat opacity-10"></div>
-        {renderContent()}
+        <Routes>
+          <Route path="/login" element={
+              <LoginRoute>
+                  <LoginCard onLoginSuccess={handleLoginSuccess} />
+              </LoginRoute>
+          } />
+          <Route path="/ems" element={
+              <ProtectedRoute requiredRole={AgencyRole.AMBULANCE}>
+                  <Dashboard onLogout={handleLogout} />
+              </ProtectedRoute>
+          }/>
+          <Route path="/fire" element={
+              <ProtectedRoute requiredRole={AgencyRole.FIRE_DEPT}>
+                  <FireDashboard onLogout={handleLogout} />
+              </ProtectedRoute>
+          }/>
+          <Route path="/police" element={
+              <ProtectedRoute requiredRole={AgencyRole.POLICE_DEPT}>
+                  <PoliceDashboard onLogout={handleLogout} />
+              </ProtectedRoute>
+          }/>
+          <Route path="/traffic-police" element={
+              <ProtectedRoute requiredRole={AgencyRole.TRAFFIC_POLICE}>
+                  <TrafficPoliceDashboard onLogout={handleLogout} />
+              </ProtectedRoute>
+          }/>
+           <Route path="/admin" element={
+              <ProtectedRoute requiredRole={AgencyRole.ADMIN}>
+                  <AdminDashboard onLogout={handleLogout} />
+              </ProtectedRoute>
+          }/>
+          <Route path="*" element={<HomeRedirect />} />
+        </Routes>
       </main>
     </LanguageProvider>
   );

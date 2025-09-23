@@ -28,13 +28,13 @@ const agencyDetails: { [key in Agency]: { icon: React.ReactNode; color: string }
 const EmergencyCorridorPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
 
-  const initialRequests: CorridorRequest[] = [
+  const getInitialRequests = (): CorridorRequest[] => [
     { id: 1, unitId: t('ems_15'), agency: 'Ambulance', source: t('source_sector_14'), destination: t('dest_mbh'), status: 'Pending' },
     { id: 2, unitId: t('pcr_07'), agency: 'Police', source: t('junction_hathi_pol'), destination: t('dest_hathi_pol_riot_control'), status: 'Active' },
     { id: 3, unitId: t('engine_03'), agency: 'Fire Dept', source: t('junction_madri_industrial'), destination: t('dest_warehouse_fire'), status: 'Pending' },
   ];
 
-  const [requests, setRequests] = useState(initialRequests);
+  const [requests, setRequests] = useState(getInitialRequests);
 
   const handleToggleStatus = (id: number) => {
       setRequests(currentRequests =>
@@ -48,13 +48,28 @@ const EmergencyCorridorPanel: React.FC = () => {
   };
 
   React.useEffect(() => {
-    setRequests(initialRequests);
+    setRequests(currentRequests => {
+        const newRequestData = getInitialRequests();
+        return currentRequests.map(req => {
+            const newData = newRequestData.find(newReq => newReq.id === req.id);
+            if (newData) {
+                return {
+                    ...req, // Keep current status from user interaction
+                    unitId: newData.unitId,
+                    source: newData.source,
+                    destination: newData.destination,
+                };
+            }
+            return req;
+        });
+    });
   }, [t]);
   
   return (
     <PanelCard title={t('corridor_requests_panel_title')} icon={<ClipboardListIcon className="h-5 w-5 text-indigo-500" />}>
       <div className="h-full space-y-3 overflow-y-auto pr-2 custom-scrollbar">
-        {requests.map((request) => {
+        {requests.length > 0 ? (
+          requests.map((request) => {
             const isPending = request.status === 'Pending';
             const details = agencyDetails[request.agency];
             return (
@@ -91,7 +106,12 @@ const EmergencyCorridorPanel: React.FC = () => {
                     </div>
                 </div>
             )
-        })}
+          })
+        ) : (
+            <div className="flex items-center justify-center h-full text-slate-500">
+                <p>{t('common_no_data')}</p>
+            </div>
+        )}
       </div>
     </PanelCard>
   );

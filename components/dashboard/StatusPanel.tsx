@@ -27,7 +27,8 @@ const StatusPanel: React.FC = () => {
   return (
     <PanelCard title={t('status_panel_title')} icon={<ClipboardListIcon className="h-5 w-5 text-indigo-500" />}>
       <div className="h-full space-y-3 overflow-y-auto pr-2 custom-scrollbar">
-        {activeRequests.map((request) => (
+        {activeRequests.length > 0 ? (
+          activeRequests.map((request) => (
             <div key={request.id} className="p-4 rounded-lg border border-slate-200/80 transition-all duration-300 odd:bg-slate-100/70 even:bg-transparent hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-lg">
                 <div className="flex flex-col gap-3">
                     {/* Header: Unit ID and Status Tags */}
@@ -76,7 +77,12 @@ const StatusPanel: React.FC = () => {
                      <p className="text-xs text-slate-400 text-right -mt-2">{t('common_request_time')} 14:32</p>
                 </div>
             </div>
-        ))}
+          ))
+        ) : (
+          <div className="flex items-center justify-center h-full text-slate-500">
+            <p>{t('common_no_data')}</p>
+          </div>
+        )}
       </div>
     </PanelCard>
   );

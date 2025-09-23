@@ -65,7 +65,6 @@ const SystemAnalyticsPanel: React.FC = () => {
                     {tabs.map((tab, index) => (
                         <button
                             key={tab.id}
-                            // FIX: The ref callback function should not return a value. Wrapped the assignment in curly braces to ensure a void return type.
                             ref={el => { tabsRef.current[index] = el; }}
                             onClick={() => setActiveTab(tab.id as AnalyticsTab)}
                             className={`relative z-10 flex-1 sm:flex-auto flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors duration-300 ${activeTab === tab.id ? 'text-indigo-600' : 'text-slate-600 hover:text-slate-800'}`}

@@ -110,6 +110,11 @@ export const translations = {
     hi: "मिनट",
     or: "ମିନିଟ୍",
   },
+  common_no_data: {
+    en: "No data available at this time.",
+    hi: "इस समय कोई डेटा उपलब्ध नहीं है।",
+    or: "ଏହି ସମୟରେ କୌଣସି ଡାଟା ଉପଲବ୍ଧ ନାହିଁ।",
+  },
   common_active_corridor: {
     en: "Emergency Corridor Active",
     hi: "आपातकालीन गलियारा सक्रिय",

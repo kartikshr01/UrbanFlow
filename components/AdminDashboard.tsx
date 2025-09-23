@@ -1,7 +1,6 @@
 import React, { useState, useContext, useMemo, useRef, useEffect } from 'react';
 import AdminHeader from './admin-dashboard/AdminHeader';
 import SystemOverviewPanel from './admin-dashboard/SystemOverviewPanel';
-import SystemAnalyticsPanel from './admin-dashboard/SystemAnalyticsPanel';
 import CorridorAnalytics from './admin-dashboard/analytics-tabs/CorridorAnalytics';
 import LaneAnalytics from './admin-dashboard/analytics-tabs/LaneAnalytics';
 import DataAnalytics from './admin-dashboard/analytics-tabs/DataAnalytics';
@@ -11,7 +10,7 @@ import { LayoutDashboardIcon } from './icons/LayoutDashboardIcon';
 import { RoadSirenIcon } from './icons/RoadSirenIcon';
 import { RoadsIcon } from './icons/RoadsIcon';
 import { PieChartIcon } from './icons/PieChartIcon';
-
+import PanelCard from './shared/PanelCard';
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -33,16 +32,23 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
   ], [t]);
   
   useEffect(() => {
-    const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
-    const activeTabElem = tabsRef.current[activeTabIndex];
+    const updateSlider = () => {
+      const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
+      const activeTabElem = tabsRef.current[activeTabIndex];
 
-    if (activeTabElem) {
-        const { offsetLeft, offsetWidth } = activeTabElem;
-        setSliderStyle({
-            transform: `translateX(${offsetLeft}px)`,
-            width: `${offsetWidth}px`,
-        });
+      if (activeTabElem) {
+          const { offsetLeft, offsetWidth } = activeTabElem;
+          setSliderStyle({
+              transform: `translateX(${offsetLeft}px)`,
+              width: `${offsetWidth}px`,
+          });
+      }
     }
+    
+    updateSlider(); // initial positioning
+
+    window.addEventListener('resize', updateSlider);
+    return () => window.removeEventListener('resize', updateSlider);
   }, [activeTab, tabs]);
 
   const renderContent = () => {
@@ -50,30 +56,33 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         case 'corridors':
             return (
                 <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    <CorridorAnalytics />
+                     <PanelCard title={t('corridors_tab')} icon={<RoadSirenIcon className="h-5 w-5 text-indigo-500"/>}>
+                        <CorridorAnalytics />
+                    </PanelCard>
                 </div>
             );
         case 'lanes':
             return (
                 <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    <LaneAnalytics />
+                    <PanelCard title={t('lanes_tab')} icon={<RoadsIcon className="h-5 w-5 text-indigo-500"/>}>
+                        <LaneAnalytics />
+                    </PanelCard>
                 </div>
             );
         case 'analytics':
              return (
                 <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    <DataAnalytics />
+                    <PanelCard title={t('analytics_tab')} icon={<PieChartIcon className="h-5 w-5 text-indigo-500"/>}>
+                        <DataAnalytics />
+                    </PanelCard>
                 </div>
             );
         case 'overview':
         default:
             return (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-1 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="flex justify-center">
+                    <div className="w-full max-w-2xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
                         <SystemOverviewPanel />
-                    </div>
-                    <div className="lg:col-span-2 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                        <SystemAnalyticsPanel />
                     </div>
                 </div>
             );

@@ -38,9 +38,15 @@ const RecentActivitiesPanel: React.FC = () => {
   return (
     <PanelCard title={t('recent_activities_panel_title')} icon={<HistoryIcon className="h-5 w-5 text-indigo-500" />}>
         <div className="h-full space-y-1 overflow-y-auto pr-2 custom-scrollbar">
-            {activities.map((activity, index) => (
-                <ActivityItem key={index} item={activity} />
-            ))}
+            {activities.length > 0 ? (
+                activities.map((activity, index) => (
+                    <ActivityItem key={index} item={activity} />
+                ))
+            ) : (
+                <div className="flex items-center justify-center h-full text-slate-500">
+                    <p>{t('common_no_data')}</p>
+                </div>
+            )}
         </div>
     </PanelCard>
   );

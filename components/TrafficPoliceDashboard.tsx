@@ -33,16 +33,23 @@ const TrafficPoliceDashboard: React.FC<TrafficPoliceDashboardProps> = ({ onLogou
   ], [t]);
 
   useEffect(() => {
-    const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
-    const activeTabElem = tabsRef.current[activeTabIndex];
+    const updateSlider = () => {
+        const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
+        const activeTabElem = tabsRef.current[activeTabIndex];
 
-    if (activeTabElem) {
-        const { offsetLeft, offsetWidth } = activeTabElem;
-        setSliderStyle({
-            transform: `translateX(${offsetLeft}px)`,
-            width: `${offsetWidth}px`,
-        });
+        if (activeTabElem) {
+            const { offsetLeft, offsetWidth } = activeTabElem;
+            setSliderStyle({
+                transform: `translateX(${offsetLeft}px)`,
+                width: `${offsetWidth}px`,
+            });
+        }
     }
+    
+    updateSlider(); // initial positioning
+
+    window.addEventListener('resize', updateSlider);
+    return () => window.removeEventListener('resize', updateSlider);
   }, [activeTab, tabs]);
 
 

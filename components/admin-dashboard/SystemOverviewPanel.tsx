@@ -24,7 +24,7 @@ const SystemOverviewPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
   return (
     <PanelCard title={t('system_overview_panel_title')} icon={<LayoutDashboardIcon className="h-5 w-5 text-indigo-500" />}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 h-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
             <StatItem 
                 icon={<JunctionIcon className="h-6 w-6" />}
                 value="4"

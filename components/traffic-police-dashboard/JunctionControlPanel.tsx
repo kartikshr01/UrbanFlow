@@ -51,7 +51,7 @@ const ManageStatusModal: React.FC<{
 const JunctionControlPanel: React.FC = () => {
     const { t } = useContext(LanguageContext);
     
-    const initialJunctions: Junction[] = [
+    const getInitialJunctions = (): Junction[] => [
         { id: 'CC', name: t('junction_chetak_circle'), status: 'Auto' },
         { id: 'FC', name: t('junction_fatehpura'), status: 'Manual Override' },
         { id: 'DG', name: t('junction_delhi_gate'), status: 'Corridor Active' },
@@ -59,12 +59,24 @@ const JunctionControlPanel: React.FC = () => {
         { id: 'UC', name: t('junction_udaipole'), status: 'Offline' },
     ];
 
-    const [junctions, setJunctions] = useState<Junction[]>(initialJunctions);
+    const [junctions, setJunctions] = useState<Junction[]>(getInitialJunctions);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedJunction, setSelectedJunction] = useState<Junction | null>(null);
 
     React.useEffect(() => {
-        setJunctions(initialJunctions);
+        setJunctions(currentJunctions => {
+            const newNames: { [key: string]: string } = {
+                'CC': t('junction_chetak_circle'),
+                'FC': t('junction_fatehpura'),
+                'DG': t('junction_delhi_gate'),
+                'SC': t('junction_shastri_circle'),
+                'UC': t('junction_udaipole'),
+            };
+            return currentJunctions.map(j => ({
+                ...j,
+                name: newNames[j.id] || j.name
+            }));
+        });
     }, [t]);
 
     const handleOpenModal = (junction: Junction) => {
@@ -90,24 +102,30 @@ const JunctionControlPanel: React.FC = () => {
         <>
             <PanelCard title={t('junction_control_panel_title')} icon={<JunctionIcon className="h-5 w-5 text-indigo-500" />}>
                  <div className="h-full space-y-2 overflow-y-auto pr-2 custom-scrollbar">
-                    {junctions.map((junction) => (
-                        <div key={junction.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
-                            <div>
-                                <p className="font-semibold text-[#1d293d]">{junction.id}: {junction.name}</p>
+                    {junctions.length > 0 ? (
+                        junctions.map((junction) => (
+                            <div key={junction.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 rounded-lg odd:bg-slate-100/70 even:bg-transparent">
+                                <div>
+                                    <p className="font-semibold text-[#1d293d]">{junction.id}: {junction.name}</p>
+                                </div>
+                                <div className="flex items-center gap-4 self-end sm:self-center">
+                                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${statusDetails[junction.status].color}`}>
+                                        {t(statusDetails[junction.status].labelKey)}
+                                    </span>
+                                    <button
+                                        onClick={() => handleOpenModal(junction)}
+                                        className="px-4 py-1.5 text-sm font-semibold text-slate-700 bg-white rounded-lg border border-slate-300 hover:bg-slate-100 transition-colors"
+                                    >
+                                        {t('manage_button')}
+                                    </button>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-4 self-end sm:self-center">
-                                <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${statusDetails[junction.status].color}`}>
-                                    {t(statusDetails[junction.status].labelKey)}
-                                </span>
-                                <button
-                                    onClick={() => handleOpenModal(junction)}
-                                    className="px-4 py-1.5 text-sm font-semibold text-slate-700 bg-white rounded-lg border border-slate-300 hover:bg-slate-100 transition-colors"
-                                >
-                                    {t('manage_button')}
-                                </button>
-                            </div>
+                        ))
+                    ) : (
+                        <div className="flex items-center justify-center h-full text-slate-500">
+                            <p>{t('common_no_data')}</p>
                         </div>
-                    ))}
+                    )}
                 </div>
             </PanelCard>
             {selectedJunction && (
