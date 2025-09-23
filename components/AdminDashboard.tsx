@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useContext, useMemo, useRef, useLayoutEffect } from 'react';
 import AdminHeader from './admin-dashboard/AdminHeader';
 import SystemOverviewPanel from './admin-dashboard/SystemOverviewPanel';
 import CorridorAnalytics from './admin-dashboard/analytics-tabs/CorridorAnalytics';
@@ -31,7 +31,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
     { id: 'analytics', label: t('analytics_tab'), icon: <PieChartIcon className="h-4 w-4" /> },
   ], [t]);
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateSlider = () => {
       const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
       const activeTabElem = tabsRef.current[activeTabIndex];
@@ -45,7 +45,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       }
     }
     
-    updateSlider(); // initial positioning
+    updateSlider();
 
     window.addEventListener('resize', updateSlider);
     return () => window.removeEventListener('resize', updateSlider);
@@ -81,7 +81,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         default:
             return (
                 <div className="flex justify-center">
-                    <div className="w-full max-w-2xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    <div className="w-full max-w-5xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
                         <SystemOverviewPanel />
                     </div>
                 </div>

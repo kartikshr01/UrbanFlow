@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useContext, useRef, useLayoutEffect, useMemo } from 'react';
 import TrafficPoliceHeader from './traffic-police-dashboard/TrafficPoliceHeader';
 import QuickStatsPanel from './traffic-police-dashboard/QuickStatsPanel';
 import RecentActivitiesPanel from './traffic-police-dashboard/RecentActivitiesPanel';
@@ -32,7 +32,7 @@ const TrafficPoliceDashboard: React.FC<TrafficPoliceDashboardProps> = ({ onLogou
     { id: 'reports', label: t('reports_tab'), icon: <DocumentReportIcon className="h-4 w-4" /> },
   ], [t]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateSlider = () => {
         const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
         const activeTabElem = tabsRef.current[activeTabIndex];
@@ -46,7 +46,7 @@ const TrafficPoliceDashboard: React.FC<TrafficPoliceDashboardProps> = ({ onLogou
         }
     }
     
-    updateSlider(); // initial positioning
+    updateSlider();
 
     window.addEventListener('resize', updateSlider);
     return () => window.removeEventListener('resize', updateSlider);
