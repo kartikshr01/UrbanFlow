@@ -110,14 +110,6 @@
 <body>
   <div id="root"></div>
   <div id="modal-root"></div>
-  <script>
-    function initMap() {
-      // This function is called by the Google Maps script once it has loaded.
-      // It dispatches a custom event that React components can listen for.
-      window.dispatchEvent(new CustomEvent('google-maps-loaded'));
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY_HERE&libraries=places&callback=initMap" async defer></script>
   <script type="module" src="/index.tsx"></script>
 </body>
 

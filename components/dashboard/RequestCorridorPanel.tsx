@@ -6,9 +6,6 @@ import PanelCard from '../shared/PanelCard';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import EmergencyRequestConfirmationModal from '../shared/EmergencyRequestConfirmationModal';
 
-// FIX: Declare google as a global constant to resolve missing namespace errors for Google Maps API.
-declare const google: any;
-
 export interface RequestDetails {
   latitude: string;
   longitude: string;
@@ -42,7 +39,6 @@ const RequestCorridorPanel: React.FC = () => {
   const [requestData, setRequestData] = useState<RequestDetails | null>(null);
 
   const priorityDropdownRef = useRef<HTMLDivElement>(null);
-  const destinationInputRef = useRef<HTMLInputElement>(null);
   
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,53 +59,6 @@ const RequestCorridorPanel: React.FC = () => {
         setSelectedPriority(currentPriority);
     }
   }, [t]);
-
-  useEffect(() => {
-    // FIX: Use `any` for the autocomplete instance type to resolve TypeScript error `Cannot find namespace 'google'`.
-    // The `google` object is available globally at runtime but its type definitions are not present in this project.
-    let autocomplete: any = null;
-  
-    const setupAutocomplete = () => {
-      // FIX: Use global `google` object instead of `window.google`.
-      if (typeof google !== 'undefined' && google.maps && google.maps.places && destinationInputRef.current) {
-        autocomplete = new google.maps.places.Autocomplete(
-          destinationInputRef.current,
-          {
-            componentRestrictions: { country: 'in' },
-            fields: ['formatted_address'],
-            types: ['geocode', 'establishment'],
-          }
-        );
-        autocomplete.addListener('place_changed', () => {
-          const place = autocomplete!.getPlace();
-          if (place && place.formatted_address) {
-            setDestination(place.formatted_address);
-          }
-        });
-      }
-    };
-  
-    // FIX: Use global `google` object instead of `window.google`.
-    if (typeof google !== 'undefined' && google.maps) {
-      setupAutocomplete();
-    } else {
-      window.addEventListener('google-maps-loaded', setupAutocomplete, { once: true });
-    }
-  
-    return () => {
-      window.removeEventListener('google-maps-loaded', setupAutocomplete);
-      if (autocomplete) {
-        // The `pac-container` is the DOM element for the dropdown.
-        // It's attached to the body and needs to be cleaned up.
-        const pacContainers = document.querySelectorAll('.pac-container');
-        pacContainers.forEach(container => container.remove());
-        // FIX: Use global `google` object instead of `window.google` and add defensive check.
-        if (typeof google !== 'undefined' && google.maps && google.maps.event) {
-          google.maps.event.clearInstanceListeners(autocomplete);
-        }
-      }
-    };
-  }, []);
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
@@ -225,7 +174,6 @@ const RequestCorridorPanel: React.FC = () => {
         <div>
           <label htmlFor="destination" className="block text-sm font-medium text-[#7a8596] mb-1.5">{t('destination_label')}</label>
           <input 
-            ref={destinationInputRef}
             type="text" 
             id="destination" 
             placeholder={t('destination_placeholder')} 

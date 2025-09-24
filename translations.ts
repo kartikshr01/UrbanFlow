@@ -262,7 +262,7 @@ export const translations = {
   priority_level_1: { en: "Level 1 - Standard", hi: "स्तर 1 - मानक", or: "ସ୍ତର 1 - ମାନକ" },
   priority_level_1_desc: { en: "Priority transport/escort", hi: "प्राथमिकता परिवहन/एस्कॉर्ट", or: "ପ୍ରାଥମିକତା ପରିବହନ/ଏସକର୍ଟ" },
   destination_label: { en: "Destination", hi: "गंतव्य", or: "ଗନ୍ତବ୍ୟସ୍ଥଳ" },
-  destination_placeholder: { en: "Search for a destination or address...", hi: "गंतव्य या पता खोजें...", or: "ଗନ୍ତବ୍ୟସ୍ଥଳ କିମ୍ବା ଠିକଣା ଖୋଜନ୍ତୁ..." },
+  destination_placeholder: { en: "Enter destination address...", hi: "गंतव्य पता दर्ज करें...", or: "ଗନ୍ତବ୍ୟସ୍ଥଳ ଠିକଣା ପ୍ରବେଶ କରନ୍ତୁ..." },
   current_location_label: { en: "Current Location", hi: "वर्तमान स्थान", or: "ବର୍ତ୍ତମାନର ଅବସ୍ଥାନ" },
   latitude_placeholder: { en: "Latitude", hi: "अक्षांश", or: "ଅକ୍ଷାଂଶ" },
   longitude_placeholder: { en: "Longitude", hi: "देशांतर", or: "ଦ୍ରାଘିମା" },
