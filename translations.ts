@@ -174,7 +174,7 @@ export const translations = {
   error_location_unavailable: { en: "Location information is currently unavailable. Please check your network connection or try again.", hi: "स्थान की जानकारी वर्तमान में अनुपलब्ध है। कृपया अपना नेटवर्क कनेक्शन जांचें या पुनः प्रयास करें।", or: "ଅବସ୍ଥାନ ସୂଚନା ବର୍ତ୍ତମାନ ଅନୁପଲବ୍ଧ। ଦୟାକରି ଆପଣଙ୍କ ନେଟୱାର୍କ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ କିମ୍ବା ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।" },
   error_location_timeout: { en: "The request to get your location timed out. Please try again.", hi: "आपके स्थान का पता लगाने का अनुरोध समय समाप्त हो गया। कृपया पुन: प्रयास करें।", or: "ଆପଣଙ୍କ ଅବସ୍ଥାନ ପାଇବା ପାଇଁ ଅନୁରୋଧ ସମୟ ସମାପ୍ତ ହୋଇଗଲା। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।" },
   error_location_generic: { en: "An unexpected error occurred while fetching your location.", hi: "आपका स्थान प्राप्त करते समय एक अप्रत्याशित त्रुटि हुई।", or: "ଆପଣଙ୍କ ଅବସ୍ଥାନ ଆଣିବା ସମୟରେ ଏକ ଅପ୍ରତ୍ୟାଶିତ ତ୍ରୁଟି ଘଟିଲା।" },
-  error_location_unsupported: { en: "Geolocation is not supported by your browser. Please use a browser that supports this feature.", hi: "जियोलोकेशन आपके ब्राउज़र द्वारा समर्थित नहीं है। कृपया इस सुविधा का समर्थन करने वाले ब्राउज़र का उपयोग करें।", or: "ଆପଣଙ୍କ ବ୍ରାଉଜର୍ ଦ୍ୱାରା ଜିଓଲୋକେସନ୍ ସମର୍ଥିତ ନୁହେଁ। ଦୟାକରି ଏହି ସୁବିଧାକୁ ସମର୍ଥନ କରୁଥିବା ଏକ ବ୍ରାଉଜର୍ ବ୍ୟବହାର କରନ୍ତୁ।" },
+  error_location_unsupported: { en: "Geolocation is not supported by your browser. Please use a browser that supports this feature.", hi: "जियोलोकेशन आपके ब्राउज़र द्वारा समर्थित नहीं है। कृपया इस सुविधा का समर्थन करने वाले ब्राउज़र का उपयोग करें।", or: "ଆପଣଙ୍କ ବ୍ରାଉଜର୍ ଦ୍ୱାରା ଜିଓଲୋକେସନ୍ ସମର୍ଥିତ ନୁହଁ। ଦୟାକରି ଏହି ସୁବିଧାକୁ ସମର୍ଥନ କରୁଥିବା ଏକ ବ୍ରାଉଜର୍ ବ୍ୟବହାର କରନ୍ତୁ।" },
   
   // Junction Names
   junction_chetak_circle: { en: "Chetak Circle", hi: "चेतक सर्कल", or: "ଚେତକ ସର୍କଲ" },
@@ -262,7 +262,7 @@ export const translations = {
   priority_level_1: { en: "Level 1 - Standard", hi: "स्तर 1 - मानक", or: "ସ୍ତର 1 - ମାନକ" },
   priority_level_1_desc: { en: "Priority transport/escort", hi: "प्राथमिकता परिवहन/एस्कॉर्ट", or: "ପ୍ରାଥମିକତା ପରିବହନ/ଏସକର୍ଟ" },
   destination_label: { en: "Destination", hi: "गंतव्य", or: "ଗନ୍ତବ୍ୟସ୍ଥଳ" },
-  destination_placeholder: { en: "e.g., City General Hospital", hi: "उदा., सिटी जनरल अस्पताल", or: "ଉଦା., ସିଟି ଜେନେରାଲ୍ ହସ୍ପିଟାଲ୍" },
+  destination_placeholder: { en: "Search for a destination or address...", hi: "गंतव्य या पता खोजें...", or: "ଗନ୍ତବ୍ୟସ୍ଥଳ କିମ୍ବା ଠିକଣା ଖୋଜନ୍ତୁ..." },
   current_location_label: { en: "Current Location", hi: "वर्तमान स्थान", or: "ବର୍ତ୍ତମାନର ଅବସ୍ଥାନ" },
   latitude_placeholder: { en: "Latitude", hi: "अक्षांश", or: "ଅକ୍ଷାଂଶ" },
   longitude_placeholder: { en: "Longitude", hi: "देशांतर", or: "ଦ୍ରାଘିମା" },

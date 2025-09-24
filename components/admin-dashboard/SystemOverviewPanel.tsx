@@ -5,7 +5,6 @@ import { JunctionIcon } from '../icons/JunctionIcon';
 import { UsersIcon } from '../icons/UsersIcon';
 import { LayoutDashboardIcon } from '../icons/LayoutDashboardIcon';
 import { ShieldIcon } from '../icons/ShieldIcon';
-import { StopwatchIcon } from '../icons/StopwatchIcon';
 import { RoadSirenIcon } from '../icons/RoadSirenIcon';
 
 const StatCard: React.FC<{ icon: React.ReactNode; value: string; label: string; iconBg: string; iconColor: string; }> = ({ icon, value, label, iconBg, iconColor }) => (
@@ -30,7 +29,7 @@ const SystemOverviewPanel: React.FC = () => {
                 </span>
                 <p className="text-lg font-semibold text-green-800">All Systems Operational</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 h-full">
                 <StatCard 
                     icon={<JunctionIcon className="h-8 w-8" />}
                     value="4"
@@ -59,15 +58,6 @@ const SystemOverviewPanel: React.FC = () => {
                     iconBg="bg-red-100"
                     iconColor="text-red-500"
                 />
-                <div className="lg:col-span-2">
-                    <StatCard 
-                        icon={<StopwatchIcon className="h-8 w-8" />}
-                        value="99.98%"
-                        label={"System Uptime (90d)"}
-                        iconBg="bg-green-100"
-                        iconColor="text-green-600"
-                    />
-                </div>
             </div>
         </div>
     </PanelCard>
