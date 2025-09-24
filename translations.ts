@@ -555,7 +555,6 @@ export const translations = {
   evening_rush_flow: { en: "Evening Rush Hour Flow (Veh/hr)", hi: "शाम की भीड़ का प्रवाह (वाहन/घंटा)", or: "ସନ୍ଧ୍ୟା ଭିଡ଼ ପ୍ରବାହ (ଯାନ/ଘଣ୍ଟା)" },
   without_ai: { en: "Without AI", hi: "एआई के बिना", or: "AI ବିନା" },
   with_ai: { en: "With AI", hi: "एआई के साथ", or: "AI ସହିତ" },
-  kpi_uptime: { en: "System Uptime (90d)", hi: "सिस्टम अपटाइम (90दिन)", or: "ସିଷ୍ଟମ୍ ଅପଟାଇମ୍ (୯୦ଦିନ)" },
   kpi_api_latency: { en: "API Latency (p95)", hi: "एपीआई विलंबता (p95)", or: "API ଲାଟେନ୍ସି (p95)" },
   kpi_ai_decision_latency: { en: "AI Decision Latency", hi: "एआई निर्णय विलंबता", or: "AI ନିଷ୍ପତ୍ତି ଲାଟେନ୍ସି" },
   kpi_db_query_time: { en: "DB Query Time (Avg)", hi: "डीबी क्वेरी समय (औसत)", or: "DB କ୍ୱେରୀ ସମୟ (ହାରାହାରି)" },

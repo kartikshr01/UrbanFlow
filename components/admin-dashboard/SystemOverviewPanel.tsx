@@ -21,44 +21,35 @@ const SystemOverviewPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
   return (
     <PanelCard title={t('system_overview_panel_title')} icon={<LayoutDashboardIcon className="h-5 w-5 text-indigo-500" />}>
-        <div className="flex flex-col space-y-6">
-            <div className="flex items-center justify-center gap-3 p-4 bg-green-50 rounded-lg border-2 border-dashed border-green-200">
-                <span className="relative flex h-4 w-4">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
-                </span>
-                <p className="text-lg font-semibold text-green-800">All Systems Operational</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 h-full">
-                <StatCard 
-                    icon={<JunctionIcon className="h-8 w-8" />}
-                    value="4"
-                    label={t('stat_total_junctions')}
-                    iconBg="bg-indigo-100"
-                    iconColor="text-indigo-500"
-                />
-                <StatCard 
-                    icon={<UsersIcon className="h-8 w-8" />}
-                    value="28"
-                    label={t('stat_active_officers')}
-                    iconBg="bg-sky-100"
-                    iconColor="text-sky-500"
-                />
-                <StatCard 
-                    icon={<ShieldIcon className="h-8 w-8" />}
-                    value="47"
-                    label={t('stat_emergency_vehicles')}
-                    iconBg="bg-teal-100"
-                    iconColor="text-teal-500"
-                />
-                <StatCard 
-                    icon={<RoadSirenIcon className="h-8 w-8" />}
-                    value="8"
-                    label={t('stat_active_corridors')}
-                    iconBg="bg-red-100"
-                    iconColor="text-red-500"
-                />
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 h-full">
+            <StatCard 
+                icon={<JunctionIcon className="h-8 w-8" />}
+                value="4"
+                label={t('stat_total_junctions')}
+                iconBg="bg-indigo-100"
+                iconColor="text-indigo-500"
+            />
+            <StatCard 
+                icon={<UsersIcon className="h-8 w-8" />}
+                value="28"
+                label={t('stat_active_officers')}
+                iconBg="bg-sky-100"
+                iconColor="text-sky-500"
+            />
+            <StatCard 
+                icon={<ShieldIcon className="h-8 w-8" />}
+                value="47"
+                label={t('stat_emergency_vehicles')}
+                iconBg="bg-teal-100"
+                iconColor="text-teal-500"
+            />
+            <StatCard 
+                icon={<RoadSirenIcon className="h-8 w-8" />}
+                value="8"
+                label={t('stat_active_corridors')}
+                iconBg="bg-red-100"
+                iconColor="text-red-500"
+            />
         </div>
     </PanelCard>
   );

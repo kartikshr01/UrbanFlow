@@ -65,7 +65,9 @@ const RequestCorridorPanel: React.FC = () => {
   }, [t]);
 
   useEffect(() => {
-    let autocomplete: google.maps.places.Autocomplete | null = null;
+    // FIX: Use `any` for the autocomplete instance type to resolve TypeScript error `Cannot find namespace 'google'`.
+    // The `google` object is available globally at runtime but its type definitions are not present in this project.
+    let autocomplete: any = null;
   
     const setupAutocomplete = () => {
       // FIX: Use global `google` object instead of `window.google`.

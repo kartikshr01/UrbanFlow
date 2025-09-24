@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 
@@ -35,7 +36,6 @@ const PerformanceAnalytics: React.FC = () => {
     return (
         <div className="space-y-6 animate-fade-in">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <KPI title={t('kpi_uptime')} value="99.991%" color="text-green-600" />
                 <KPI title={t('kpi_api_latency')} value="112 ms" color="text-orange-500" />
                 <KPI title={t('kpi_ai_decision_latency')} value="45 ms" color="text-green-600" />
                 <KPI title={t('kpi_db_query_time')} value="15 ms" color="text-green-600" />
