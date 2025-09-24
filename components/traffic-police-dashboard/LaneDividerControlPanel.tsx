@@ -102,7 +102,7 @@ const LaneDividerControlPanel: React.FC = () => {
         {/* Visualizer */}
         <div className="md:col-span-3 flex flex-col justify-center">
             <div className="w-full p-4 bg-slate-900 rounded-lg border border-slate-700 shadow-inner">
-                <div className="relative w-full h-64 bg-slate-800 rounded-md overflow-hidden [perspective:800px] border-4 border-slate-600">
+                <div className="relative w-full h-48 sm:h-56 md:h-64 bg-slate-800 rounded-md overflow-hidden [perspective:800px] border-4 border-slate-600">
                     <div className="absolute inset-0 [transform:rotateX(25deg)] scale-[1.2] top-4">
                         <div className="w-full h-full flex">
                             {[...Array(selectedLocation.totalLanes)].map((_, i) => (
@@ -125,13 +125,13 @@ const LaneDividerControlPanel: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center mt-4 px-1">
                     <div className="text-left w-2/5">
-                        <p className="font-bold text-sky-300 text-sm truncate">{selectedLocation.dirAName}</p>
-                        <p className="text-3xl font-black text-white">{lanesDirA}</p>
+                        <p className="font-bold text-sky-300 text-xs sm:text-sm truncate">{selectedLocation.dirAName}</p>
+                        <p className="text-2xl sm:text-3xl font-black text-white">{lanesDirA}</p>
                     </div>
                     <div className="text-center text-slate-400 text-xs font-mono uppercase">Lanes</div>
                     <div className="text-right w-2/5">
-                        <p className="font-bold text-fuchsia-300 text-sm truncate">{selectedLocation.dirBName}</p>
-                        <p className="text-3xl font-black text-white">{lanesDirB}</p>
+                        <p className="font-bold text-fuchsia-300 text-xs sm:text-sm truncate">{selectedLocation.dirBName}</p>
+                        <p className="text-2xl sm:text-3xl font-black text-white">{lanesDirB}</p>
                     </div>
                 </div>
             </div>

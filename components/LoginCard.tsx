@@ -181,7 +181,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
         <button
           type="submit"
           disabled={!agencyRole || !username || !password || (is2faStep && twoFactorCode.length < 6)}
-          className="w-full rounded-lg bg-indigo-600 py-3.5 text-base font-semibold text-white transition-all hover:bg-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 shadow-lg hover:shadow-indigo-500/40 disabled:bg-slate-300 disabled:cursor-not-allowed disabled:shadow-none"
+          className="w-full rounded-lg bg-indigo-600 py-3 sm:py-3.5 text-base font-semibold text-white transition-all hover:bg-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 shadow-lg hover:shadow-indigo-500/40 disabled:bg-slate-300 disabled:cursor-not-allowed disabled:shadow-none"
         >
           {is2faStep ? t('verify_login_button') : t('continue_button')}
         </button>

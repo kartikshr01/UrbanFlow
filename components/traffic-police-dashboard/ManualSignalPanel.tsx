@@ -150,7 +150,7 @@ const ManualSignalPanel: React.FC = () => {
                         </div>
                         <div className="bg-slate-900 rounded-md flex items-center justify-center border-2 border-slate-600 shadow-inner">
                             {currentJunction.isAutoMode && !currentJunction.isOverrideActive ? (
-                                <span className="text-6xl font-bold font-mono text-white tabular-nums">{currentJunction.timer}</span>
+                                <span className="text-5xl sm:text-6xl font-bold font-mono text-white tabular-nums">{currentJunction.timer}</span>
                             ) : (
                                 <AlertTriangleIcon className="h-16 w-16 text-orange-400" />
                             )}
@@ -218,7 +218,7 @@ const ManualSignalPanel: React.FC = () => {
                         )}
                         
                         {!currentJunction.isOverrideActive ? (
-                            <button onClick={handleEngageOverride} className="w-full py-3.5 font-semibold text-white bg-orange-600 rounded-lg hover:bg-orange-500 transition-colors shadow-lg hover:shadow-orange-500/40 flex items-center justify-center gap-2">
+                            <button onClick={handleEngageOverride} className="w-full py-3 sm:py-3.5 font-semibold text-white bg-orange-600 rounded-lg hover:bg-orange-500 transition-colors shadow-lg hover:shadow-orange-500/40 flex items-center justify-center gap-2">
                                 <AlertTriangleIcon className="h-5 w-5" />
                                 {t('engage_manual_override_button')}
                             </button>

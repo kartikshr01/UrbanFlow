@@ -110,7 +110,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   aria-current={activeTab === tab.id ? 'page' : undefined}
               >
                   {tab.icon}
-                  <span className="truncate">{tab.label}</span>
+                  <span className="truncate hidden sm:inline">{tab.label}</span>
               </button>
           ))}
       </nav>

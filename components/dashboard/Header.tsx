@@ -30,12 +30,12 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-green-600/80 rounded-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-green-500/40">
+          <button className="flex items-center gap-2 px-3 sm:px-4 py-2 text-sm font-semibold text-white bg-green-600/80 rounded-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-green-500/40">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
             </span>
-            {t('unit_online')}
+            <span className="hidden sm:inline">{t('unit_online')}</span>
           </button>
           <LanguageSelector />
           <button

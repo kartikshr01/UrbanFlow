@@ -26,7 +26,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
       aria-labelledby="modal-title"
     >
       <div
-        className="w-full max-w-md rounded-2xl bg-[#fdfeff] p-8 shadow-lg shadow-slate-300/60 border border-slate-200/80 animate-fade-in"
+        className="w-full max-w-md rounded-2xl bg-[#fdfeff] p-6 sm:p-8 shadow-lg shadow-slate-300/60 border border-slate-200/80 animate-fade-in"
         style={{ animationDuration: '0.3s' }}
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
       >
