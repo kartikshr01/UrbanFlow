@@ -158,9 +158,9 @@ export const translations = {
   aria_change_language: { en: "Change language", hi: "भाषा बदलें", or: "ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ" },
   aria_switch_to_light: { en: "Switch to light mode", hi: "लाइट मोड पर स्विच करें", or: "ଲାଇଟ୍ ମୋଡକୁ ସୁଇଚ୍ କରନ୍ତୁ" },
   aria_switch_to_dark: { en: "Switch to dark mode", hi: "डार्क मोड पर स्विच करें", or: "ଡାର୍କ ମୋଡକୁ ସୁଇଚ୍ କରନ୍ତୁ" },
-  lang_en: { en: "English", hi: "English", or: "English" },
-  lang_hi: { en: "हिन्दी", hi: "हिन्दी", or: "हिन्दी" },
-  lang_or: { en: "ଓଡ଼ିଆ", hi: "ଓଡ଼ିଆ", or: "ଓଡ଼ିଆ" },
+  lang_en: { en: "English", hi: "अंग्रेज़ी", or: "ଇଂରାଜୀ" },
+  lang_hi: { en: "Hindi", hi: "हिन्दी", or: "ହିନ୍ଦୀ" },
+  lang_or: { en: "Odia", hi: "ओड़िया", or: "ଓଡ଼ିଆ" },
   alt_map: { en: "Dark abstract city map", hi: "शहर का गहरा सार नक्शा", or: "ଗାଢ଼ ଅବଷ୍ଟ୍ରାକ୍ଟ ସହର ମାନଚିତ୍ର" },
   
   // Logos

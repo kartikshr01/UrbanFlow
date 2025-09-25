@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+
+import React, { useState, useContext, useMemo } from 'react';
 import PanelCard from '../shared/PanelCard';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { ArrowRightIcon } from '../icons/ArrowRightIcon';
@@ -18,15 +19,14 @@ interface CorridorRequest {
     status: CorridorRequestStatus;
 }
 
-const agencyDetails: { [key in Agency]: { icon: React.ReactNode; color: string } } = {
+const EmergencyCorridorPanel: React.FC = () => {
+  const { t } = useContext(LanguageContext);
+
+  const agencyDetails = useMemo(() => ({
     Ambulance: { icon: <AmbulanceLogo className="h-5 w-5" />, color: 'text-red-500' },
     Police: { icon: <PoliceLogo className="h-5 w-5" />, color: 'text-blue-500' },
     'Fire Dept': { icon: <FireLogo className="h-5 w-5" />, color: 'text-orange-500' },
-};
-
-
-const EmergencyCorridorPanel: React.FC = () => {
-  const { t } = useContext(LanguageContext);
+  }), []);
 
   const getInitialRequests = (): CorridorRequest[] => [
     { id: 1, unitId: t('ems_15'), agency: 'Ambulance', source: t('source_sector_14'), destination: t('dest_mbh'), status: 'Pending' },
