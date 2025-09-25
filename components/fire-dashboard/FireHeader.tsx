@@ -22,7 +22,7 @@ const FireHeader: React.FC<HeaderProps> = ({ onLogout }) => {
       <header className="flex flex-wrap items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60 gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 border border-orange-200">
-            <FireLogo className="h-7 w-7 text-orange-500" />
+            <FireLogo className="h-7 w-7 text-orange-500" title={t('logo_fire_department')} />
           </div>
           <div>
             <h1 className="text-xl font-bold text-[#1d293d]">{t('fire_header_title')}</h1>
@@ -53,6 +53,8 @@ const FireHeader: React.FC<HeaderProps> = ({ onLogout }) => {
         onConfirm={handleConfirmLogout}
         title={t('confirm_end_shift_title')}
         message={t('confirm_end_shift_message')}
+        cancelButtonText={t('cancel_button')}
+        confirmButtonText={t('end_shift_button')}
       />
     </>
   );

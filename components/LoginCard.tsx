@@ -73,7 +73,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLoginSuccess }) => {
       </div>
       <div className="flex flex-col items-center">
         <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 border border-indigo-200" style={{ animation: 'pulse-glow 4s infinite' }}>
-          <TrafficSystemLogoIcon className="h-8 w-8 text-indigo-500" />
+          <TrafficSystemLogoIcon className="h-8 w-8 text-indigo-500" title={t('logo_traffic_system')} />
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-sky-500">{t('login_title')}</h1>
         <p className="text-base sm:text-lg text-slate-600">{t('login_system_name')}</p>

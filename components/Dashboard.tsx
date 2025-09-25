@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './dashboard/Header';
 import RequestCorridorPanel from './dashboard/RequestCorridorPanel';
 import StatusPanel from './dashboard/StatusPanel';
 import BrandHeader from './shared/BrandHeader';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 interface DashboardProps {
   onLogout: () => void;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
+  const { t } = useContext(LanguageContext);
   return (
     <div className="w-full min-h-screen max-w-screen-2xl mx-auto flex flex-col gap-6 animate-fade-in">
-      <BrandHeader />
+      <BrandHeader title={t('login_title')} subtitle={t('login_system_name')} />
       <div className="animate-fade-in relative z-10" style={{ animationDelay: '0.1s' }}>
         <Header onLogout={onLogout} />
       </div>

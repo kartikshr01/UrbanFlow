@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import React from 'react';
 
 interface LogoProps {
   className?: string;
+  title: string;
 }
 
-export const PoliceLogo: React.FC<LogoProps> = ({ className }) => {
-  const { t } = useContext(LanguageContext);
+export const PoliceLogo: React.FC<LogoProps> = ({ className, title }) => {
   const titleId = 'police-logo-title';
   return (
     <svg
@@ -16,7 +15,7 @@ export const PoliceLogo: React.FC<LogoProps> = ({ className }) => {
       aria-labelledby={titleId}
       role="img"
     >
-      <title id={titleId}>{t('logo_police_department')}</title>
+      <title id={titleId}>{title}</title>
       <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="currentColor" fillOpacity="0.1" />
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />

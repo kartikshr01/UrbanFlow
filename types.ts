@@ -6,3 +6,15 @@ export enum AgencyRole {
   AMBULANCE = "Ambulance Services",
   FIRE_DEPT = "Fire Department",
 }
+
+export interface RequestDetails {
+  latitude: string;
+  longitude: string;
+  destination: string;
+  priority: {
+    label: string;
+    description: string;
+    value: string;
+  };
+  description: string;
+}

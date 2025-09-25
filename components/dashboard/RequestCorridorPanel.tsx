@@ -5,18 +5,7 @@ import { ChevronDownIcon } from '../icons/ChevronDownIcon';
 import PanelCard from '../shared/PanelCard';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import EmergencyRequestConfirmationModal from '../shared/EmergencyRequestConfirmationModal';
-
-export interface RequestDetails {
-  latitude: string;
-  longitude: string;
-  destination: string;
-  priority: {
-    label: string;
-    description: string;
-    value: string;
-  };
-  description: string;
-}
+import { RequestDetails } from '../types';
 
 const RequestCorridorPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);

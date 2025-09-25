@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import React from 'react';
 
 interface IconProps {
   className?: string;
+  title: string;
 }
 
-export const TrafficSystemLogoIcon: React.FC<IconProps> = ({ className }) => {
-  const { t } = useContext(LanguageContext);
+export const TrafficSystemLogoIcon: React.FC<IconProps> = ({ className, title }) => {
   const titleId = 'traffic-system-logo-title';
   return (
     <svg
@@ -16,7 +15,7 @@ export const TrafficSystemLogoIcon: React.FC<IconProps> = ({ className }) => {
       aria-labelledby={titleId}
       role="img"
     >
-      <title id={titleId}>{t('logo_traffic_system')}</title>
+      <title id={titleId}>{title}</title>
       <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         {/* Shield */}
         <path d="M12 22.5C12 22.5 21 18 21 12V4.5L12 1.5L3 4.5V12C3 18 12 22.5 12 22.5Z" fill="currentColor" fillOpacity="0.1" />

@@ -91,7 +91,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
   return (
     <div className="w-full min-h-screen max-w-screen-2xl mx-auto flex flex-col gap-6 animate-fade-in">
-      <BrandHeader />
+      <BrandHeader title={t('login_title')} subtitle={t('login_system_name')} />
       <div className="animate-fade-in relative z-10" style={{ animationDelay: '0.1s' }}>
         <AdminHeader onLogout={onLogout} />
       </div>

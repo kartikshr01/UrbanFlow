@@ -23,10 +23,10 @@ const EmergencyCorridorPanel: React.FC = () => {
   const { t } = useContext(LanguageContext);
 
   const agencyDetails = useMemo(() => ({
-    Ambulance: { icon: <AmbulanceLogo className="h-5 w-5" />, color: 'text-red-500' },
-    Police: { icon: <PoliceLogo className="h-5 w-5" />, color: 'text-blue-500' },
-    'Fire Dept': { icon: <FireLogo className="h-5 w-5" />, color: 'text-orange-500' },
-  }), []);
+    Ambulance: { icon: <AmbulanceLogo className="h-5 w-5" title={t('logo_ambulance_services')} />, color: 'text-red-500' },
+    Police: { icon: <PoliceLogo className="h-5 w-5" title={t('logo_police_department')} />, color: 'text-blue-500' },
+    'Fire Dept': { icon: <FireLogo className="h-5 w-5" title={t('logo_fire_department')} />, color: 'text-orange-500' },
+  }), [t]);
 
   const getInitialRequests = (): CorridorRequest[] => [
     { id: 1, unitId: t('ems_15'), agency: 'Ambulance', source: t('source_sector_14'), destination: t('dest_mbh'), status: 'Pending' },

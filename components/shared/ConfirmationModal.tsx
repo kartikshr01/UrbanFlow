@@ -1,8 +1,8 @@
 
-import React, { useContext } from 'react';
+
+import React from 'react';
 import { createPortal } from 'react-dom';
 import { AlertTriangleIcon } from '../icons/AlertTriangleIcon';
-import { LanguageContext } from '../../contexts/LanguageContext';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -10,10 +10,11 @@ interface ConfirmationModalProps {
   onConfirm: () => void;
   title: string;
   message: string;
+  cancelButtonText: string;
+  confirmButtonText: string;
 }
 
-const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, onConfirm, title, message }) => {
-  const { t } = useContext(LanguageContext);
+const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, onConfirm, title, message, cancelButtonText, confirmButtonText }) => {
   if (!isOpen) return null;
 
   const modalContent = (
@@ -45,13 +46,13 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
             onClick={onClose}
             className="px-5 py-2.5 text-sm font-semibold text-slate-700 bg-slate-200 rounded-lg hover:bg-slate-300 transition-colors focus:outline-none focus:ring-4 focus:ring-slate-400"
           >
-            {t('cancel_button')}
+            {cancelButtonText}
           </button>
           <button
             onClick={onConfirm}
             className="px-5 py-2.5 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-500 transition-colors focus:outline-none focus:ring-4 focus:ring-red-500/50 shadow-lg hover:shadow-red-500/40"
           >
-            {t('end_shift_button')}
+            {confirmButtonText}
           </button>
         </div>
       </div>

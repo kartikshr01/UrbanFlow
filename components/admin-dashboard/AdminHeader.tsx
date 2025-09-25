@@ -46,6 +46,8 @@ const AdminHeader: React.FC<HeaderProps> = ({ onLogout }) => {
         onConfirm={handleConfirmLogout}
         title={t('confirm_end_shift_title')}
         message={t('confirm_end_shift_message')}
+        cancelButtonText={t('cancel_button')}
+        confirmButtonText={t('end_shift_button')}
       />
     </>
   );

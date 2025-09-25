@@ -22,7 +22,7 @@ const TrafficPoliceHeader: React.FC<HeaderProps> = ({ onLogout }) => {
       <header className="flex flex-wrap items-center justify-between w-full bg-white border-slate-200 border rounded-2xl p-4 shadow-md shadow-slate-200/60 gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 border border-indigo-200">
-            <TrafficSystemLogoIcon className="h-7 w-7 text-indigo-500" />
+            <TrafficSystemLogoIcon className="h-7 w-7 text-indigo-500" title={t('logo_traffic_system')} />
           </div>
           <div>
             <h1 className="text-xl font-bold text-[#1d293d]">{t('traffic_police_header_title')}</h1>
@@ -46,6 +46,8 @@ const TrafficPoliceHeader: React.FC<HeaderProps> = ({ onLogout }) => {
         onConfirm={handleConfirmLogout}
         title={t('confirm_end_shift_title')}
         message={t('confirm_end_shift_message')}
+        cancelButtonText={t('cancel_button')}
+        confirmButtonText={t('end_shift_button')}
       />
     </>
   );

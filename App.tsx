@@ -9,7 +9,7 @@ import AdminDashboard from './components/AdminDashboard';
 import { AgencyRole } from './types';
 import { LanguageProvider } from './contexts/LanguageContext';
 
-const App: React.FC = () => {
+const AppRoutes: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState<AgencyRole | null>(null);
   const navigate = useNavigate();
@@ -69,37 +69,44 @@ const App: React.FC = () => {
 
 
   return (
+    <main className={`relative min-h-screen w-full flex justify-center p-2 sm:p-4 lg:p-6 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300 ${isLoggedIn ? 'items-start' : 'items-center'}`}>
+      <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/google/aistudio/main/assets/app-assets/ems-grid-bg.svg')] bg-repeat opacity-10"></div>
+      <Routes>
+        <Route path="/login" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <LoginRoute element={<LoginCard onLoginSuccess={handleLoginSuccess} />} />
+        } />
+        <Route path="/ems" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <ProtectedRoute requiredRole={AgencyRole.AMBULANCE} element={<Dashboard onLogout={handleLogout} />} />
+        }/>
+        <Route path="/fire" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <ProtectedRoute requiredRole={AgencyRole.FIRE_DEPT} element={<FireDashboard onLogout={handleLogout} />} />
+        }/>
+        <Route path="/police" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <ProtectedRoute requiredRole={AgencyRole.POLICE_DEPT} element={<PoliceDashboard onLogout={handleLogout} />} />
+        }/>
+        <Route path="/traffic-police" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <ProtectedRoute requiredRole={AgencyRole.TRAFFIC_POLICE} element={<TrafficPoliceDashboard onLogout={handleLogout} />} />
+        }/>
+         <Route path="/admin" element={
+            // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
+            <ProtectedRoute requiredRole={AgencyRole.ADMIN} element={<AdminDashboard onLogout={handleLogout} />} />
+        }/>
+        <Route path="*" element={<HomeRedirect />} />
+      </Routes>
+    </main>
+  );
+};
+
+
+const App: React.FC = () => {
+  return (
     <LanguageProvider>
-      <main className={`relative min-h-screen w-full flex justify-center p-2 sm:p-4 lg:p-6 overflow-hidden font-inter text-slate-800 bg-slate-50 transition-colors duration-300 ${isLoggedIn ? 'items-start' : 'items-center'}`}>
-        <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/google/aistudio/main/assets/app-assets/ems-grid-bg.svg')] bg-repeat opacity-10"></div>
-        <Routes>
-          <Route path="/login" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <LoginRoute element={<LoginCard onLoginSuccess={handleLoginSuccess} />} />
-          } />
-          <Route path="/ems" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <ProtectedRoute requiredRole={AgencyRole.AMBULANCE} element={<Dashboard onLogout={handleLogout} />} />
-          }/>
-          <Route path="/fire" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <ProtectedRoute requiredRole={AgencyRole.FIRE_DEPT} element={<FireDashboard onLogout={handleLogout} />} />
-          }/>
-          <Route path="/police" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <ProtectedRoute requiredRole={AgencyRole.POLICE_DEPT} element={<PoliceDashboard onLogout={handleLogout} />} />
-          }/>
-          <Route path="/traffic-police" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <ProtectedRoute requiredRole={AgencyRole.TRAFFIC_POLICE} element={<TrafficPoliceDashboard onLogout={handleLogout} />} />
-          }/>
-           <Route path="/admin" element={
-              // FIX: Changed to use 'element' prop to pass the component to the route wrapper.
-              <ProtectedRoute requiredRole={AgencyRole.ADMIN} element={<AdminDashboard onLogout={handleLogout} />} />
-          }/>
-          <Route path="*" element={<HomeRedirect />} />
-        </Routes>
-      </main>
+      <AppRoutes />
     </LanguageProvider>
   );
 };

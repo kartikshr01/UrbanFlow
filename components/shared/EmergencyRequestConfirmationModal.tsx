@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import { AlertTriangleIcon } from '../icons/AlertTriangleIcon';
 import { LanguageContext } from '../../contexts/LanguageContext';
-import type { RequestDetails } from '../dashboard/RequestCorridorPanel';
+import type { RequestDetails } from '../../types';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
